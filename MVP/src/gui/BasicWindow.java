@@ -5,7 +5,9 @@ import java.util.Observable;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-public abstract class BasicWindow extends Observable implements Runnable {
+import view.AbstractView;
+
+public abstract class BasicWindow extends AbstractView implements Runnable {
 
 	protected Display display;
 	protected Shell shell;
@@ -15,7 +17,7 @@ public abstract class BasicWindow extends Observable implements Runnable {
 	
 	@Override
 	public void run() {
-		display = new Display();  // our display
+		display = Display.getCurrent();  // our display
 		shell = new Shell(display); // our window
 
 		initWidgets();
@@ -34,6 +36,12 @@ public abstract class BasicWindow extends Observable implements Runnable {
 		} // shell is disposed
 
 		display.dispose(); // dispose OS components
+	}
+	
+	public void exit(){
+		shell.dispose(); //dispose shell
+		display.dispose(); // dispose OS components
+		System.exit(0); // Exit process
 	}
 
 }

@@ -5,7 +5,10 @@ import java.io.PrintWriter;
 import java.util.Observable;
 import java.util.Observer;
 
-public class MyView extends Observable implements View, Observer {
+import algorithms.mazeGenarators.Maze3d;
+import presenter.Properties;
+
+public class MyView extends AbstractView {
 	
 	private BufferedReader in;
 	private PrintWriter out;
@@ -61,6 +64,24 @@ public class MyView extends Observable implements View, Observer {
 			setChanged();
 			notifyObservers(arg);
 		}
+	}
+
+	@Override
+	public void displayMaze(Maze3d maze) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setProperties(Properties properties) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void notifyMazeIsReady(String name) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
